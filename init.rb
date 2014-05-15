@@ -11,7 +11,7 @@ end
 
 Rails.application.config.after_initialize do
   if Rails.env.development?
-    enable_assets_listeners = Setting.plugin_a_common_libs[:enable_assets_listeners]
+    enable_assets_listeners = Setting.plugin_rmplus_devtools[:enable_assets_listeners]
     if enable_assets_listeners
       $listeners = []
       Rails.logger.debug "Initializing listeners..."
