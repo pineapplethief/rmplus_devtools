@@ -39,7 +39,7 @@ Rails.application.config.after_initialize do
               FileUtils.remove_entry(target, true)
             end
           end
-          Rails.logger.debug "Starting assets listener for plugin #{name}"
+          Rails.logger.debug "Starting assets listener for plugin #{name} in directory #{source}"
           assets_listener.start
           $listeners << assets_listener
         end
