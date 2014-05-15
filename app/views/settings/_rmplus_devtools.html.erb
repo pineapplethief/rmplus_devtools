@@ -1,0 +1,13 @@
+<% @settings = Setting.plugin_rmplus_devtools || {} %>
+
+<% if Rails.env.development? %>
+  <div style="overflow: hidden">
+    <label style="margin-left: 0px; width: auto; font-weight: normal;">
+      <%= check_box_tag 'settings[enable_assets_listeners]', true, @settings[:enable_assets_listeners] %> &mdash; <%= l(:settings_enable_assets_listeners) %>
+    </label>
+  </div>
+<% else %>
+  <div style="overflow: hidden">
+    <p><%= l(:settings_server_in_production) %></p>
+  </div>
+<% end %>

@@ -1,3 +1,4 @@
 # English strings go here for Rails i18n
 en:
-  # my_label: "My label"
+  settings_enable_assets_listeners: "Enable on-the-fly sync of plugins assets (for developers, works only in development mode)"
+  settings_server_in_production: "Your server is currently in production mode. This plugin will only work in development mode."
