@@ -2,3 +2,7 @@
 ru:
   settings_enable_assets_listeners: "Включить синхронизацию javascript и css файлов на лету (для разработчиков, работает только в режиме development)"
   settings_server_in_production: "Этот плагин рsаботает только в режиме development. Переключите ваш сервер в этот режим."
+
+  settings_enable_profiling: "Включить измерение производительности с помощью rack-mini-profiler"
+  label_only_this_user: "Для улучшения быстродействия измерение производительности проводится только для выбранных пользователей"
+  settings_user_to_profile: "Логин пользователя, для которого будет выполняться измерение производительности"

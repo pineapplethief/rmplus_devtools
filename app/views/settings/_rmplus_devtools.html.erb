@@ -1,5 +1,28 @@
+<% defaults = Redmine::Plugin::registered_plugins[:rmplus_devtools].settings[:default] %>
 <% @settings = Setting.plugin_rmplus_devtools || {} %>
+<% @settings[:enable_profiling] ||= false %>
+<% user_to_profile_ids = @settings['user_to_profile_ids'].is_a?(Array) ? @settings['user_to_profile_ids'] : defaults['user_to_profile_ids'] %>
+<% users = User.active %>
 
+<%= content_for :header_tags do %>
+  <%= stylesheet_link_tag 'settings', :plugin => 'a_common_libs', :media => 'screen' %>
+  <%= stylesheet_link_tag 'rack_mini_profiler', :plugin => 'rmplus_devtools', :media => 'screen' %>
+<% end %>
+
+<div style="overflow: hidden">
+  <label style="margin-left: 0px; width: auto; font-weight: normal;">
+    <%= check_box_tag 'settings[enable_profiling]', true, @settings[:enable_profiling] %> &mdash; <%= l(:settings_enable_profiling) %>
+  </label>
+</div>
+<div style="overflow: hidden">
+  <label id="label_only_this_user" style="margin-left: 0px; width: auto;"><%= l(:label_only_this_user) %></label>
+</div>
+<div style="overflow: hidden">
+  <label style="margin-left: 0px; width: auto; font-weight: normal;">
+    <%= l(:settings_user_to_profile) %>:
+    <%= select_tag 'settings[user_to_profile_ids][]', options_from_collection_for_select(users, "id", "name", user_to_profile_ids), { :class => 'select2', :multiple => '' } %>
+  </label>
+</div>
 <% if Rails.env.development? %>
   <div style="overflow: hidden">
     <label style="margin-left: 0px; width: auto; font-weight: normal;">
