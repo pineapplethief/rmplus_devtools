@@ -13,7 +13,6 @@ Redmine::Plugin.register :rmplus_devtools do
 end
 
 Rails.application.config.after_initialize do
-  Rails.logger.debug "<<< before_initialize callback!"
   RmplusDevtools::AssetsListener.check_listeners
 end
 

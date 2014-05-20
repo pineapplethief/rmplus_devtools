@@ -4,9 +4,7 @@ module RmplusDevtools
       if Rails.env.development?
         enable_assets_listeners = (Setting.plugin_rmplus_devtools || {})[:enable_assets_listeners] || false
         if enable_assets_listeners
-          Rails.logger.debug "listeners enabled"
           if defined?($listeners) == "global-variable" && ($listeners.nil? || $listeners.blank?) || defined?($listeners).nil?
-            Rails.logger.debug "listeners nil or empty or not defined, starting listeners"
             self.start_listeners
           end
         end
