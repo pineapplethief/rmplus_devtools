@@ -58,9 +58,13 @@ module RMPlus_Devtools
 end
 
 Rails.application.config.after_initialize do
+  Rails.logger.debug "<<< before_initialize callback!"
   RMPlus_Devtools.start_listeners
 end
 
-Rails.application.config.to_prepare do
-  RMPlus_Devtools.start_listeners
-end
+# ActionDispatch::Callbacks.before do
+#   Rails.logger.debug "<<< before callback with actiondispatch!"
+#   if defined? $listeners == "global-variable"
+#     RMPlus_Devtools.start_listeners
+#   end
+# end
