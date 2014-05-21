@@ -1,4 +1,5 @@
 module RmplusDevtools
+
   module ApplicationControllerPatch
     def self.included(base)
       base.extend(ClassMethods)
@@ -30,8 +31,10 @@ module RmplusDevtools
       end
 
       def check_assets_listeners
-        Rails.logger.debug "<<< check_assets_listeners after_filter!"
-        AssetsListener.check_listeners
+        if Rails.env.development?
+          Rails.logger.debug "<<< check_assets_listeners after_filter!"
+          AssetsListener.check_listeners
+        end
       end
 
     end

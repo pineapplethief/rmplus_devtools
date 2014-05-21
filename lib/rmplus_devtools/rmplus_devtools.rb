@@ -1,10 +1,25 @@
 module RmplusDevtools
+
+
   module AssetsListener
+
+    @@listeners = []
+
+    def self.listeners=(listeners)
+      @@listeners = listeners
+    end
+
+    def self.listeners
+      @@listeners
+    end
+
     def self.check_listeners
       if Rails.env.development?
+        Rails.logger.debug "Environment is development!"
         enable_assets_listeners = (Setting.plugin_rmplus_devtools || {})[:enable_assets_listeners] || false
         if enable_assets_listeners
-          if defined?($listeners) == "global-variable" && ($listeners.nil? || $listeners.blank?) || defined?($listeners).nil?
+          Rails.logger.debug "assets listeners are enabled!"
+          if (defined?(self.listeners)).nil? || (self.listeners.nil? || self.listeners.blank?)
             self.start_listeners
           end
         end
@@ -12,7 +27,6 @@ module RmplusDevtools
     end
 
     def self.start_listeners
-      $listeners = []
       Rails.logger.debug "Initializing listeners..."
       Redmine::Plugin.registered_plugins.each do |name, plugin|
         source = plugin.assets_directory
@@ -40,13 +54,13 @@ module RmplusDevtools
           end
           Rails.logger.debug "Starting listener for plugin #{name}"
           assets_listener.start
-          $listeners << assets_listener
+          self.listeners << assets_listener
         end
       end
       at_exit do
         Rails.logger.debug "Stopping listeners..."
-        $listeners.each{ |listener| listener.stop }
-        $listeners = []
+        self.listeners.each{ |listener| listener.stop }
+        self.listeners = []
       end
     end
 
