@@ -16,8 +16,6 @@ Rails.application.config.after_initialize do
   RmplusDevtools::AssetsListener.check_listeners
 end
 
-require 'rmplus_devtools/view_hooks'
-
 Rails.application.config.to_prepare do
   ApplicationController.send(:include, RmplusDevtools::ApplicationControllerPatch)
 end
