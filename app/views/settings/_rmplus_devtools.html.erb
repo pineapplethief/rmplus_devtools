@@ -1,5 +1,4 @@
 <% defaults = Redmine::Plugin::registered_plugins[:rmplus_devtools].settings[:default] %>
-<% @settings ||= {} %>
 <% @settings[:enable_profiling] ||= false %>
 <% user_to_profile_ids = @settings['user_to_profile_ids'].is_a?(Array) ? @settings['user_to_profile_ids'] : defaults['user_to_profile_ids'] %>
 <% users = User.active %>
