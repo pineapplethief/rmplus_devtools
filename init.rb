@@ -13,7 +13,9 @@ Redmine::Plugin.register :rmplus_devtools do
 end
 
 Rails.application.config.after_initialize do
-  Rails.logger.debug "<<< before_initialize callback!"
+  if Redmine::Plugin.registered_plugins[:rmplus_devtools].nil?
+    Rails.logger.debug "rmplus_devtools not registered!!!"
+  end
   RmplusDevtools::AssetsListener.check_listeners
 end
 
