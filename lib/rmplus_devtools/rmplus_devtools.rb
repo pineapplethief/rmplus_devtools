@@ -22,8 +22,5 @@ module RmplusDevtools
       end
     end
 
-    def self.start_listeners
-    end
-
   end
 end
