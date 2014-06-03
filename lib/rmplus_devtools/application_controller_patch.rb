@@ -6,7 +6,7 @@ module RmplusDevtools
       base.send(:include, InstanceMethods)
 
       base.class_eval do
-        after_filter :rack_mini_profiler, :check_assets_listeners
+        after_filter :rack_mini_profiler
       end
     end
 
@@ -27,13 +27,6 @@ module RmplusDevtools
               Rack::MiniProfiler.authorize_request
             end
           end
-        end
-      end
-
-      def check_assets_listeners
-        if Rails.env.development?
-          Rails.logger.debug "<<< check_assets_listeners after_filter!"
-          AssetsListener.check_listeners
         end
       end
 
