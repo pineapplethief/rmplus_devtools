@@ -6,3 +6,5 @@ en:
   settings_enable_profiling: "Enable rack mini profiler in production"
   label_only_this_user: "For perfomance reasons, profiling is only enabled for selected users"
   settings_user_to_profile: "Enter login for that user"
+
+  label_rmplus_logo: "This plugin is developed by \"RM+\" team. You can check out all of our plugins on"
