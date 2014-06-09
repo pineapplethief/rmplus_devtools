@@ -2,3 +2,5 @@
 ru:
   settings_enable_assets_listeners: "Включить синхронизацию javascript и css файлов на лету (для разработчиков, работает только в режиме development)"
   settings_server_in_production: "Этот плагин рsаботает только в режиме development. Переключите ваш сервер в этот режим."
+
+  label_rmplus_logo: "Данный плагин разработан командой «RM+». Вы всегда можете найти другие наши плагины на сайте"

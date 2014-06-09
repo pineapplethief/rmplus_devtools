@@ -2,3 +2,5 @@
 en:
   settings_enable_assets_listeners: "Enable on-the-fly sync of plugins assets (for developers, works only in development mode)"
   settings_server_in_production: "Your server is currently in production mode. This plugin will only work in development mode."
+
+  label_rmplus_logo: "This plugin is developed by \"RM+\" team. You can check out all of our plugins on"
