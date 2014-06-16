@@ -1,8 +1,12 @@
-<% @settings = Setting.plugin_rmplus_devtools || {} %>
+<% defaults = Redmine::Plugin::registered_plugins[:rmplus_devtools].settings[:default] %>
+<% @settings[:enable_profiling] ||= false %>
+<% user_to_profile_ids = @settings['user_to_profile_ids'].is_a?(Array) ? @settings['user_to_profile_ids'] : defaults['user_to_profile_ids'] %>
+<% users = User.active %>
 
 <%= content_for :header_tags do %>
   <%= stylesheet_link_tag 'settings', :plugin => 'a_common_libs', :media => 'screen' %>
   <%= stylesheet_link_tag 'rack_mini_profiler', :plugin => 'rmplus_devtools', :media => 'screen' %>
+  <%= stylesheet_link_tag 'rmplus-logo', :plugin => 'rmplus_devtools', :media => 'screen' %>
 <% end %>
 
 <div style="overflow: hidden">
