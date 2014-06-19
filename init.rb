@@ -14,6 +14,10 @@ end
 
 Rails.application.config.after_initialize do
   RmplusDevtools::AssetsListener.check_listeners
+  enable_oink = (Setting.plugin_rmplus_devtools || {})[:enable_oink] || false
+  if enable_oink
+    Rails.application.middleware.use Oink::Middleware
+  end
 end
 
 Rails.application.config.to_prepare do

@@ -8,3 +8,5 @@ en:
   settings_user_to_profile: "Enter login for that user"
 
   label_rmplus_logo: "This plugin is developed by \"RM+\" team. You can check out all of our plugins on"
+
+  settings_enable_oink: "Enable Oink profiling"
